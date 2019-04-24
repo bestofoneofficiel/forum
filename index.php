@@ -1,34 +1,61 @@
 <?php
 include 'include.php';
-//Si on demande la page d'acceuil // On affiche tous les articles
-if($_GET['controller'] === 'index' && $_GET['action'] == 'renderIndex'){
+
+// De base on affiche pas la page d'acceuil
+$basePage = false;
+
+// Si on a demandé un page
+if(!empty($_GET['controller'])) {
+
+	// Si on demande la page article
+	if ($_GET['controller'] === 'article') {
+
+		// Si on demande a inserer un article
+		if ($_GET['action'] == 'newArticle') {
+			$articleController = new ArticleController();
+			$articleController->newArticleAction();
+		}
+		// Sinon si on demande a supprimer l'article
+		else if ($_GET['action'] == 'deleteArticle') {
+			$articleController = new ArticleController();
+			$articleController->deleteArticle();
+		}
+		// Sinon si on demande l'action de modification
+		else if ($_GET['action'] == 'deleteArticleAction') {
+			$articleController = new ArticleController();
+			$articleController->deleteArticleAction($_GET['id']);
+		}
+		// Sinon si on demande une modification
+		else if ($_GET['action'] == 'updateArticle') {
+			$articleController = new ArticleController();
+			$articleController->updateArticle($_GET['id']);
+		}
+		// Sinon si on demande l'action de modification
+		else if ($_GET['action'] == 'updateArticleAction') {
+			$articleController = new ArticleController();
+			$articleController->updateArticleAction($_GET['id']);
+		}
+		// Sinon si on demande le formulaire d'insertion
+		else if ($_GET['action'] == 'formArticle') {
+			$articleController = new ArticleController();
+			$articleController->formAction();
+		}
+		// Sinon on a demandé aucune de ses pages
+		else {
+			$basePage = true;
+		}
+	} else {
+		$basePage = true;
+	}
+} else {
+	$basePage = true;
+}
+
+// Si on a demandé la page d'acceuil ou aucune page ou dans tous les autre cas
+if($basePage) {
 	$indexController = new IndexController();
 	$indexController->renderIndexAction();
 }
-// Si on demande la page article
-	//Si on demande a inserer un article
-	if($_GET['controller'] === 'article' && $_GET['action'] == 'newArticle'){
-		$articleController = new ArticleController();
-		$articleController->newArticleAction();
-	}
-	//Si on demande a supprimer l'article
-	if($_GET['controller'] === 'article' && $_GET['action'] == 'deleteArticle') {
-		$articleController = new ArticleController();
-		$articleController->deleteArticleAction($_GET['id']);
-	}
-	// Si on demande une modification
-	if($_GET['controller'] === 'article' && $_GET['action'] == 'updateArticle'){
-		$articleController = new ArticleController();
-		$articleController->updateArticle($_GET['id']);
-	}
-	// Si on demande l'action de modification
-	if($_GET['controller'] === 'article' && $_GET['action'] == 'updateArticleAction'){
-		$articleController = new ArticleController();
-		$articleController->updateArticleAction($_GET['id']);
-	}
-	// Si on demande le formulaire d'insertion
-	if($_GET['controller'] === 'article' && $_GET['action'] == 'formArticle'){
-		$articleController = new ArticleController();
-		$articleController->formAction();
-	}
+
+
 ?>
