@@ -33,6 +33,7 @@ foreach ($articles as $article){
         </p>
         <p><a href="/forum/index.php?controller=article&action=updateArticle&id=<?=$article->getId()?>">Modifier</a></p>
         <p><a href="/forum/index.php?controller=article&action=deleteArticle&id=<?=$article->getId()?>">Supprimer</a></p>
+        <p><a href="/forum/index.php?controller=article&action=updateArticle&id=<?=$article->getId()?>">Modifier</a></p>
     </div>
 	<?php
 }
