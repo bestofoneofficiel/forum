@@ -16,8 +16,13 @@ if($_GET['controller'] === 'index' && $_GET['action'] == 'renderIndex'){
 		$articleController = new ArticleController();
 		$articleController->deleteArticleAction($_GET['id']);
 	}
-	// Si on demande l'action de modification
+	// Si on demande une modification
 	if($_GET['controller'] === 'article' && $_GET['action'] == 'updateArticle'){
+		$articleController = new ArticleController();
+		$articleController->updateArticle($_GET['id']);
+	}
+	// Si on demande l'action de modification
+	if($_GET['controller'] === 'article' && $_GET['action'] == 'updateArticleAction'){
 		$articleController = new ArticleController();
 		$articleController->updateArticleAction($_GET['id']);
 	}

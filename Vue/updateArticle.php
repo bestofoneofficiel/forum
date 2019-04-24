@@ -11,9 +11,9 @@
 
 <body>
 <h1>Mon super forum !</h1>
-<p>Ici j'affiche le formulaire d'ajout d'un article</p>
+<p>Ici j'affiche le formulaire de modification d'un article</p>
 
-<form action="/forum/index.php?controller=article&action=updateArticle" method="post">
+<form action="/forum/index.php?controller=article&action=updateArticleAction&id=<?=$_GET['id']?>" method="post">
 	<input name="titre" type="text" placeholder="Ici je met le nom de mon article">
 	<input name="contenu" type="text" placeholder="Ici je met le contenu de mon article">
 	<input type="submit" value="Valider !">

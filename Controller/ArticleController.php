@@ -13,6 +13,7 @@ class ArticleController{
 		$article =  new Article(null, $_POST['titre'], $_POST['contenu']);
 		$articleManager = new ArticleManager();
 		$articleManager->insertArticle($article);
+		header('location:http://localhost/forum/index.php?controller=index&action=renderIndex');
 	}
 	public function deleteArticleAction($id){
 		$articleManager = new ArticleManager();
@@ -22,7 +23,8 @@ class ArticleController{
 	public function updateArticleAction($id){
 		$article =  new Article($id, $_POST['titre'], $_POST['contenu']);
 		$articleManager = new ArticleManager();
-		$articleManager->updateArticle($article);
+		$articleManager->updateArticleAction($article);
+		header('location:http://localhost/forum/index.php?controller=index&action=renderIndex');
 	}
 }
 ?>

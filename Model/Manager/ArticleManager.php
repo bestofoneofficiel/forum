@@ -25,8 +25,8 @@ class ArticleManager extends DbManager {
 		$res = $this->bdd->prepare($query);
 		$res->execute();
 	}
-	public function updateArticleAction($id){
-		$query = 'UPDATE FROM Article SET titre = "' . $article->getTitre() . '", contenu = "' . $article->getContenu() . '" WHERE id = ' . $id;
+	public function updateArticleAction(Article $article){
+		$query = 'UPDATE Article SET titre = "' . $article->getTitre() . '", contenu = "' . $article->getContenu() . '" WHERE id = ' . $article->getId();
 		$res = $this->bdd->prepare($query);
 		$res->execute();
 	}
